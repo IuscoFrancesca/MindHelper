@@ -1,24 +1,36 @@
 import { useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
+import { Modal } from "antd";
+import Link from "next/link";
 
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [secret, setSecret] = useState("");
+  const [ok, setOk] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    //console.log(name, email, password, secret);
-    axios
-      .post("http://localhost:8000/api/register", {
-        name: name,
-        email: email,
-        password: password,
-        secret: secret,
-      })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+    try {
+      const { data } = await axios.post(
+        `${process.env.NEXT_PUBLIC_API}/register`,
+        {
+          name: name,
+          email: email,
+          password: password,
+          secret: secret,
+        }
+      );
+      setName("");
+      setEmail("");
+      setPassword("");
+      setSecret("");
+      setOk(data.ok);
+    } catch (err) {
+      toast.error(err.response.data);
+    }
   };
 
   return (
@@ -95,9 +107,29 @@ const Register = () => {
             </div>
 
             <div className="form-group p-2">
-              <button className="btn btn-primary col-12">Submit</button>
+              <button
+                disabled={!name || !email || !password || !secret}
+                className="btn btn-primary col-12"
+              >
+                Submit
+              </button>
             </div>
           </form>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col">
+          <Modal
+            title="Congratulations!"
+            visible={ok}
+            onCancel={() => setOk(false)}
+            footer={null}
+          >
+            <p>You have successfully registered</p>
+            <Link href="/login">
+              <a className="btn btn-primary btn-sm">Login</a>
+            </Link>
+          </Modal>
         </div>
       </div>
     </div>
