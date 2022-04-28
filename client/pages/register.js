@@ -22,15 +22,12 @@ const Register = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      const { data } = await axios.post(
-        `${process.env.NEXT_PUBLIC_API}/register`,
-        {
-          name: name,
-          email: email,
-          password: password,
-          secret: secret,
-        }
-      );
+      const { data } = await axios.post(`/register`, {
+        name: name,
+        email: email,
+        password: password,
+        secret: secret,
+      });
       setName("");
       setEmail("");
       setPassword("");

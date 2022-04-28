@@ -7,10 +7,10 @@ const Home = () => {
 
   return (
     <UserRoute>
-      <div className="container">
-        <div className="row">
-          <div className="col">
-            <h1 className="display-1 text-center py-5">Dashboard page</h1>
+      <div className="container-fluid">
+        <div className="row py-5 bg-default-image">
+          <div className="display-1 text-center">
+            <h1>Dashboard page</h1>
           </div>
         </div>
       </div>
