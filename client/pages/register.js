@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Modal } from "antd";
 import Link from "next/link";
+import AuthForm from "../components/forms/AuthForm";
+import { UserContext } from "../context";
+import { useRouter } from "next/router";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -10,10 +13,15 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [secret, setSecret] = useState("");
   const [ok, setOk] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+
+  const [state] = useContext(UserContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true);
       const { data } = await axios.post(
         `${process.env.NEXT_PUBLIC_API}/register`,
         {
@@ -28,94 +36,37 @@ const Register = () => {
       setPassword("");
       setSecret("");
       setOk(data.ok);
+      setLoading(false);
     } catch (err) {
       toast.error(err.response.data);
+      setLoading(false);
     }
   };
 
+  if (state && state.token) router.push("/");
+
   return (
-    <div className="container">
-      <div className="row py-5">
+    <div className="container-fluid">
+      <div className="row py-5 bg-default-image">
         <div className="display-1 text-center">
           <h1>Register page</h1>
         </div>
       </div>
 
       <div className="row py-5">
-        <div className="col-md-6 offset-md-3">
-          <form onSubmit={handleSubmit}>
-            <div className="form-group p-2">
-              <small>
-                <label className="text-muted">Your name</label>
-              </small>
-              <input
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                type="text"
-                className="form-control"
-                placeholder="Enter name"
-              />
-            </div>
-
-            <div className="form-group p-2">
-              <small>
-                <label className="text-muted">Email address</label>
-              </small>
-              <input
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                type="email"
-                className="form-control"
-                placeholder="Enter email"
-              />
-            </div>
-
-            <div className="form-group p-2">
-              <small>
-                <label className="text-muted">Password</label>
-              </small>
-              <input
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                type="password"
-                className="form-control"
-                placeholder="Enter password"
-              />
-            </div>
-            <div className="form-group p-2">
-              <small>
-                <label className="text-muted">Pick a question</label>
-              </small>
-              <select className="form-control">
-                <option>What is your favorite color</option>
-                <option>What is your mom's name</option>
-                <option>What city you were born</option>
-              </select>
-
-              <small className="form-text text-muted">
-                You can use this to reset your password if forgotten
-              </small>
-            </div>
-            <div className="form-group p-2">
-              <input
-                value={secret}
-                onChange={(e) => setSecret(e.target.value)}
-                type="text"
-                className="form-control"
-                placeholder="Write your answer here"
-              />
-            </div>
-
-            <div className="form-group p-2">
-              <button
-                disabled={!name || !email || !password || !secret}
-                className="btn btn-primary col-12"
-              >
-                Submit
-              </button>
-            </div>
-          </form>
-        </div>
+        <div className="col-md-6 offset-md-3"></div>
+        <AuthForm
+          handleSubmit={handleSubmit}
+          name={name}
+          setName={setName}
+          email={email}
+          setEmail={setEmail}
+          password={password}
+          setPassword={setPassword}
+          secret={secret}
+          setSecret={setSecret}
+          loading={loading}
+        />
       </div>
       <div className="row">
         <div className="col">
@@ -125,11 +76,21 @@ const Register = () => {
             onCancel={() => setOk(false)}
             footer={null}
           >
-            <p>You have successfully registered</p>
+            <p>Te-ai inregistrat cu succes.</p>
             <Link href="/login">
               <a className="btn btn-primary btn-sm">Login</a>
             </Link>
           </Modal>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col">
+          <p className="text-center">
+            Already registered?{" "}
+            <Link href="/login">
+              <a className="text-center">Login</a>
+            </Link>
+          </p>
         </div>
       </div>
     </div>

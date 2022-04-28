@@ -4,16 +4,18 @@ import Head from "next/head";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "antd/dist/antd.css";
+import { UserProvider } from "../context";
+
 function MyApp({ Component, pageProps }) {
   return (
-    <>
+    <UserProvider>
       <Head>
         <link rel="stylesheet" href="/css/styles.css" />
       </Head>
       <Nav />
       <ToastContainer position="top-right" />
       <Component {...pageProps} />
-    </>
+    </UserProvider>
   );
 }
 

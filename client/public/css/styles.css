@@ -1,1 +1,8 @@
-
+.bg-default-image {
+  background-image: url(/images/default.jpg);
+  background-size: 100%;
+  height: 150px;
+}
+.active {
+  font-weight: bold;
+}
