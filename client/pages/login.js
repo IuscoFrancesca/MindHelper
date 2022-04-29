@@ -25,16 +25,21 @@ const Login = () => {
         email: email,
         password: password,
       });
-      //update context
-      setState({
-        user: data.user,
-        token: data.token,
-      });
-      //save in local storage
-      window.localStorage.setItem("auth", JSON.stringify(data));
-      router.push("/");
+      if (data.error) {
+        toast.error(data.error);
+        setLoading(false);
+      } else {
+        //update context
+        setState({
+          user: data.user,
+          token: data.token,
+        });
+        //save in local storage
+        window.localStorage.setItem("auth", JSON.stringify(data));
+        router.push("/");
+      }
     } catch (err) {
-      toast.error(err.response.data);
+      console.log(err);
       setLoading(false);
     }
   };
@@ -50,16 +55,17 @@ const Login = () => {
       </div>
 
       <div className="row py-5">
-        <div className="col-md-6 offset-md-3"></div>
-        <AuthForm
-          handleSubmit={handleSubmit}
-          email={email}
-          setEmail={setEmail}
-          password={password}
-          setPassword={setPassword}
-          loading={loading}
-          page="login"
-        />
+        <div className="col-md-6 offset-md-3">
+          <AuthForm
+            handleSubmit={handleSubmit}
+            email={email}
+            setEmail={setEmail}
+            password={password}
+            setPassword={setPassword}
+            loading={loading}
+            page="login"
+          />
+        </div>
       </div>
       <div className="row">
         <div className="col">
@@ -67,6 +73,17 @@ const Login = () => {
             Not yet registered?{" "}
             <Link href="/register">
               <a className="text-center">Register</a>
+            </Link>
+          </p>
+        </div>
+      </div>
+
+      <div className="row">
+        <div className="col">
+          <p className="text-center">
+            Forgot password?{" "}
+            <Link href="/resetpassword">
+              <a className="text-center text-danger">Reset password</a>
             </Link>
           </p>
         </div>

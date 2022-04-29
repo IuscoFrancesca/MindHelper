@@ -28,14 +28,20 @@ const Register = () => {
         password: password,
         secret: secret,
       });
-      setName("");
-      setEmail("");
-      setPassword("");
-      setSecret("");
-      setOk(data.ok);
-      setLoading(false);
+
+      if (data.error) {
+        toast.error(data.error);
+        setLoading(false);
+      } else {
+        setName("");
+        setEmail("");
+        setPassword("");
+        setSecret("");
+        setOk(data.ok);
+        setLoading(false);
+      }
     } catch (err) {
-      toast.error(err.response.data);
+      console.log(err);
       setLoading(false);
     }
   };
@@ -51,19 +57,20 @@ const Register = () => {
       </div>
 
       <div className="row py-5">
-        <div className="col-md-6 offset-md-3"></div>
-        <AuthForm
-          handleSubmit={handleSubmit}
-          name={name}
-          setName={setName}
-          email={email}
-          setEmail={setEmail}
-          password={password}
-          setPassword={setPassword}
-          secret={secret}
-          setSecret={setSecret}
-          loading={loading}
-        />
+        <div className="col-md-6 offset-md-3">
+          <AuthForm
+            handleSubmit={handleSubmit}
+            name={name}
+            setName={setName}
+            email={email}
+            setEmail={setEmail}
+            password={password}
+            setPassword={setPassword}
+            secret={secret}
+            setSecret={setSecret}
+            loading={loading}
+          />
+        </div>
       </div>
       <div className="row">
         <div className="col">
