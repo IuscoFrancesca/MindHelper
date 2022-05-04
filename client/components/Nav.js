@@ -20,12 +20,15 @@ const Nav = () => {
   };
   return (
     <nav
-      className="nav d-flex justify-content-center"
-      style={{ backgroundColor: "black" }}
+      className="nav p-2  d-flex justify-content-center fixed-top"
+      style={{ backgroundColor: "#3c5153" }}
     >
       <Link href="/">
-        <a className={`nav-link text-light ${currentUser === "/" && "active"}`}>
-          Home
+        <a
+          className={`nav-link logo ${currentUser === "/" && "active"}`}
+          style={{ color: "#cbd1d4" }}
+        >
+          Mind helper
         </a>
       </Link>
 
@@ -33,14 +36,15 @@ const Nav = () => {
         <>
           <Link href="/user/dashboard">
             <a
-              className={`nav-link text-light ${
+              className={`nav-link ${
                 currentUser === "/user/dashboard" && "active"
               }`}
+              style={{ color: "#cbd1d4" }}
             >
               {state && state.user && state.user.name}
             </a>
           </Link>
-          <a onClick={logout} className="nav-link text-light">
+          <a onClick={logout} className="nav-link" style={{ color: "#bb8a52" }}>
             Logout
           </a>
         </>
@@ -48,18 +52,16 @@ const Nav = () => {
         <>
           <Link href="/login">
             <a
-              className={`nav-link text-light ${
-                currentUser === "/login" && "active"
-              }`}
+              className={`nav-link ${currentUser === "/login" && "active"}`}
+              style={{ color: "#cbd1d4" }}
             >
               Login
             </a>
           </Link>
           <Link href="/register">
             <a
-              className={`nav-link text-light ${
-                currentUser === "/register" && "active"
-              }`}
+              className={`nav-link  ${currentUser === "/register" && "active"}`}
+              style={{ color: "#cbd1d4" }}
             >
               Register
             </a>

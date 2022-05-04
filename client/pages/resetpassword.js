@@ -47,10 +47,10 @@ const ResetPassword = () => {
   if (state && state.token) router.push("/");
 
   return (
-    <div className="container-fluid">
+    <div className="container-fluid py-5">
       <div className="row py-5 bg-default-image">
-        <div className="display-1 text-center">
-          <h1>Reset password page</h1>
+        <div className="display-1 py-5 text-center">
+          <h1 style={{ color: "#3c5153" }}>Reset password page</h1>
         </div>
       </div>
 
