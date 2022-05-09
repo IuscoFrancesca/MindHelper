@@ -1,25 +1,22 @@
 .bg-default-image {
   background-image: url(/images/home.jpg);
-  background-size: 100%;
-  height: 250px;
+  background-size: 100% 300px;
 }
 .bg-stresspage-image {
   background-image: url(/images/stressPage.jpg);
-  background-size: 100%;
-  height: 500px;
-  width: 100%;
-}
-.padding-stresspage {
-  padding: 120px 0;
+  background-size: 100% 400px;
 }
 .bg-depressionpage-image {
   background-image: url(/images/depressionPage.jpg);
-  background-size: 100%;
-  height: 500px;
-  width: 100%;
+  background-size: 100% 370px;
 }
-.padding-depressionpage {
-  padding: 150px 0;
+.bg-anxietypage-image {
+  background-image: url(/images/anxietyPage.jpg);
+  background-size: 100% 370px;
+}
+.bg-angrypage-image {
+  background-image: url(/images/angryPage.jpg);
+  background-size: 100% 370px;
 }
 
 .bg-stress-image {
@@ -27,28 +24,28 @@
   background-size: 100%;
   height: 200px;
   width: 280px;
-  box-shadow: inset 0 0 99999px rgba(255, 187, 152, 1);
+  box-shadow: inset 0 0 99999px #b49dbf;
 }
 .bg-depression-image {
   background-image: url(/images/depression.jpg);
   background-size: 100%;
   height: 200px;
   width: 280px;
-  box-shadow: inset 0 0 99999px rgba(255, 187, 152, 1);
+  box-shadow: inset 0 0 99999px #b49dbf;
 }
 .bg-anxiety-image {
   background-image: url(/images/anxiety.jpg);
   background-size: 100%;
   height: 200px;
   width: 280px;
-  box-shadow: inset 0 0 99999px rgba(255, 187, 152, 1);
+  box-shadow: inset 0 0 99999px #b49dbf;
 }
 .bg-angry-image {
   background-image: url(/images/angry.jpg);
   background-size: 110%;
   height: 200px;
   width: 280px;
-  box-shadow: inset 0 0 99999px rgba(255, 187, 152, 1);
+  box-shadow: inset 0 0 99999px #b49dbf;
 }
 .active {
   font-weight: bold;
@@ -62,16 +59,27 @@
   font-weight: 400;
   text-transform: uppercase;
 }
-.text-color-title {
-  color: #3c5153;
+.text-color-square {
+  color: #000000;
 }
 
-.bg-faded {
+.bg-square-bluepage-color {
+  background-color: #bec6ca;
+}
+.bg-bluepage-color {
+  background-color: #eef0f1;
+}
+
+.bg-square-pinkpage-color {
   background-color: #fbe0c3;
 }
-.bg-color-stress {
-  background-color: #fef8f1;
+.bg-pinkpage-color {
+  background-color: #fef7f0;
 }
-.bg-color-depression {
-  background-color: #f2f4f4;
+.nav-bar-color {
+  background-color: #344648;
+}
+
+.height-page {
+  height: 300px;
 }

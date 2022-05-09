@@ -19,14 +19,11 @@ const Nav = () => {
     router.push("/login");
   };
   return (
-    <nav
-      className="nav p-2  d-flex justify-content-center fixed-top"
-      style={{ backgroundColor: "#3c5153" }}
-    >
+    <nav className="nav p-2  d-flex justify-content-center fixed-top nav-bar-color">
       <Link href="/">
         <a
           className={`nav-link logo ${currentUser === "/" && "active"}`}
-          style={{ color: "#cbd1d4" }}
+          style={{ color: "#f2ebe5" }}
         >
           Mind helper
         </a>
@@ -39,12 +36,12 @@ const Nav = () => {
               className={`nav-link ${
                 currentUser === "/user/dashboard" && "active"
               }`}
-              style={{ color: "#cbd1d4" }}
+              style={{ color: "#f2ebe5" }}
             >
               {state && state.user && state.user.name}
             </a>
           </Link>
-          <a onClick={logout} className="nav-link" style={{ color: "#bb8a52" }}>
+          <a onClick={logout} className="nav-link" style={{ color: "#f2ebe5" }}>
             Logout
           </a>
         </>
@@ -53,7 +50,7 @@ const Nav = () => {
           <Link href="/login">
             <a
               className={`nav-link ${currentUser === "/login" && "active"}`}
-              style={{ color: "#cbd1d4" }}
+              style={{ color: "#f2ebe5" }}
             >
               Login
             </a>
@@ -61,7 +58,7 @@ const Nav = () => {
           <Link href="/register">
             <a
               className={`nav-link  ${currentUser === "/register" && "active"}`}
-              style={{ color: "#cbd1d4" }}
+              style={{ color: "#f2ebe5" }}
             >
               Register
             </a>

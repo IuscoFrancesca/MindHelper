@@ -5,14 +5,10 @@ const Stress = () => {
   const [state, setState] = useContext(UserContext);
 
   return (
-    <div className="container-fluid px-0 mx-0 bg-color-depression">
-      <div className="bg-light bg-depressionpage-image">
-        <div className="row py-5">
-          <div className="display-1 py-5 text-center">
-            <h1 className="padding-depressionpage" style={{ color: "#ffbb98" }}>
-              DEPRESIE
-            </h1>
-          </div>
+    <div className="container-fluid py-5 bg-bluepage-color">
+      <div className="row py-5 bg-depressionpage-image height-page">
+        <div className="display-1 py-5 text-center">
+          <h1 style={{ color: "#f2ebe5" }}>DEPRESIE</h1>
         </div>
       </div>
       <br></br>
@@ -97,80 +93,61 @@ const Stress = () => {
                 Modalitati de a combate depresia
               </h1>
               <div class="about-heading-content lh-base">
-                <div class="row w-100">
-                  <div class="col-xl-4 col-lg-4 mx-auto h-100">
-                    <div
-                      class="rounded p-5 border border-dark "
-                      style={{ backgroundColor: "#7d8e95" }}
-                    >
-                      <p>
-                        <b>Modificarea stilului de viata</b> - exercitiile
-                        fizice ajuta la reducerea moderata a simptomelor, dieta
-                        sanatoasa, echilibrata si variata contribuie la
-                        ameliorarea simptomelor. Similar, in cazul somnului de
-                        8-9 ore pe noapte.
-                      </p>
-                    </div>
-                  </div>
-                  <div class="col-xl-4 col-lg-4 mx-auto">
-                    <div
-                      class="rounded p-5 border border-dark "
-                      style={{ backgroundColor: "#7d8e95" }}
-                    >
-                      <p>
-                        <b>Psihoterapia</b> - psihoterapia sau terapia prin
-                        vorbire poate ajuta la ameliorarea unor simptome
-                        asociate depresiei, mai ales in cazul unei imagini
-                        distorsionate asupra lumii. Pentru formele usoare de
-                        depresie sunt suficiente schimbarea stilului de viata si
-                        psihoterapia.
-                      </p>
-                    </div>
-                  </div>
-                  <div class="col-xl-4 col-lg-4 mx-auto">
-                    <div
-                      class="rounded p-5 border border-dark "
-                      style={{ backgroundColor: "#7d8e95" }}
-                    >
-                      <p>
-                        <b>Tratament medicamentos</b> - cele mai folosite
-                        medicamente pentru tratarea depresiei sunt
-                        antidepresivele. In general, medicatia este recomandata
-                        pentru cazurile de depresie severa si cronica.
-                      </p>
-                    </div>
+                <div class="row py-3">
+                  <div class="rounded p-5 border border-dark bg-square-bluepage-color">
+                    <p>
+                      <b>Modificarea stilului de viata</b> - exercitiile fizice
+                      ajuta la reducerea moderata a simptomelor, dieta
+                      sanatoasa, echilibrata si variata contribuie la
+                      ameliorarea simptomelor. Similar, in cazul somnului de 8-9
+                      ore pe noapte.
+                    </p>
                   </div>
                 </div>
-                <div class="row mt-2">
-                  <div class="col-xl-5 col-lg-4 mx-auto">
-                    <div
-                      class="rounded p-5 border border-dark "
-                      style={{ backgroundColor: "#7d8e95" }}
-                    >
-                      <p>
-                        <b>Terapia cognitiv-comportamentala</b> - prin terapia
-                        cognitiv-comportamentala se doreste schimbarea modului
-                        de gandire autodistructiva, precum si a
-                        comportamentelor; aceasta forma de terapie are la baza
-                        ideea ca gandurile ne influenteaza comportamentul si ca
-                        schimbarea lor ajuta si la modificarea comportamentului.
-                      </p>
-                    </div>
+                <div class="row py-3">
+                  <div class="rounded p-5 border border-dark bg-square-bluepage-color">
+                    <p>
+                      <b>Psihoterapia</b> - psihoterapia sau terapia prin
+                      vorbire poate ajuta la ameliorarea unor simptome asociate
+                      depresiei, mai ales in cazul unei imagini distorsionate
+                      asupra lumii. Pentru formele usoare de depresie sunt
+                      suficiente schimbarea stilului de viata si psihoterapia.
+                    </p>
                   </div>
-                  <div class="col-xl-5 col-lg-4 mx-auto">
-                    <div
-                      class="rounded p-5 border border-dark "
-                      style={{ backgroundColor: "#7d8e95" }}
-                    >
-                      <p>
-                        <b>Remedii naturiste</b> - sunatoarea si substantele
-                        extrase din aceasta pot ajuta la ameliorarea simptomelor
-                        depresiei, avand efecte asemanatoare antidepresivelor
-                        usoare. De asemenea, frunzele de busuioc contin camfor
-                        si uleiuri volatile si pot fi folosite pentru a atenua
-                        depresia usoara.
-                      </p>
-                    </div>
+                </div>
+                <div class="row py-3">
+                  <div class="rounded p-5 border border-dark bg-square-bluepage-color">
+                    <p>
+                      <b>Tratament medicamentos</b> - cele mai folosite
+                      medicamente pentru tratarea depresiei sunt
+                      antidepresivele. In general, medicatia este recomandata
+                      pentru cazurile de depresie severa si cronica.
+                    </p>
+                  </div>
+                </div>
+                <div class="row py-3">
+                  <div class="rounded p-5 border border-dark bg-square-bluepage-color">
+                    <p>
+                      <b>Terapia cognitiv-comportamentala</b> - prin terapia
+                      cognitiv-comportamentala se doreste schimbarea modului de
+                      gandire autodistructiva, precum si a comportamentelor;
+                      aceasta forma de terapie are la baza ideea ca gandurile ne
+                      influenteaza comportamentul si ca schimbarea lor ajuta si
+                      la modificarea comportamentului.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="row py-3">
+                  <div class="rounded p-5 border border-dark bg-square-bluepage-color">
+                    <p>
+                      <b>Remedii naturiste</b> - sunatoarea si substantele
+                      extrase din aceasta pot ajuta la ameliorarea simptomelor
+                      depresiei, avand efecte asemanatoare antidepresivelor
+                      usoare. De asemenea, frunzele de busuioc contin camfor si
+                      uleiuri volatile si pot fi folosite pentru a atenua
+                      depresia usoara.
+                    </p>
                   </div>
                 </div>
               </div>
