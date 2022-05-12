@@ -22,29 +22,29 @@
 .bg-stress-image {
   background-image: url(/images/stress.jpg);
   background-size: 100%;
-  height: 200px;
-  width: 280px;
+  height: 150px;
+  width: 210px;
   box-shadow: inset 0 0 99999px #b49dbf;
 }
 .bg-depression-image {
   background-image: url(/images/depression.jpg);
   background-size: 100%;
-  height: 200px;
-  width: 280px;
+  height: 150px;
+  width: 210px;
   box-shadow: inset 0 0 99999px #b49dbf;
 }
 .bg-anxiety-image {
   background-image: url(/images/anxiety.jpg);
   background-size: 100%;
-  height: 200px;
-  width: 280px;
+  height: 150px;
+  width: 210px;
   box-shadow: inset 0 0 99999px #b49dbf;
 }
 .bg-angry-image {
   background-image: url(/images/angry.jpg);
   background-size: 110%;
-  height: 200px;
-  width: 280px;
+  height: 150px;
+  width: 210px;
   box-shadow: inset 0 0 99999px #b49dbf;
 }
 .active {
@@ -68,6 +68,10 @@
 }
 .bg-bluepage-color {
   background-color: #eef0f1;
+}
+
+.bg-purplepage-color {
+  background-color: #f4f0f5;
 }
 
 .bg-square-pinkpage-color {

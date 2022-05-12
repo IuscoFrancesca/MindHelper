@@ -18,51 +18,88 @@ const Nav = () => {
     setState(null);
     router.push("/login");
   };
-  return (
-    <nav className="nav p-2  d-flex justify-content-center fixed-top nav-bar-color">
-      <Link href="/">
-        <a
-          className={`nav-link logo ${currentUser === "/" && "active"}`}
-          style={{ color: "#f2ebe5" }}
-        >
-          Mind helper
-        </a>
-      </Link>
 
+  return (
+    <nav>
       {state !== null ? (
-        <>
-          <Link href="/user/dashboard">
+        <nav className="nav p-2  d-flex justify-content-between fixed-top nav-bar-color">
+          <Link href="/">
             <a
-              className={`nav-link ${
-                currentUser === "/user/dashboard" && "active"
-              }`}
+              className={`nav-link logo ${currentUser === "/" && "active"}`}
               style={{ color: "#f2ebe5" }}
             >
-              {state && state.user && state.user.name}
+              Mind helper
             </a>
           </Link>
-          <a onClick={logout} className="nav-link" style={{ color: "#f2ebe5" }}>
-            Logout
-          </a>
-        </>
+          <>
+            <div className="dropdown ">
+              <a
+                className="btn dropdown-toggle"
+                href="#"
+                role="button"
+                id="dropdownMenuLink"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                style={{ color: "#f2ebe5" }}
+              >
+                {state && state.user && state.user.name}
+              </a>
+              <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <li>
+                  <Link href="/user/dashboard">
+                    <a
+                      className={`nav-link dropdown-item ${
+                        currentUser === "/user/dashboard" && "active"
+                      }`}
+                      style={{ color: "#344648" }}
+                    >
+                      Dashboard
+                    </a>
+                  </Link>
+                </li>
+                <li>
+                  <a
+                    onClick={logout}
+                    className="nav-link dropdown-item"
+                    style={{ color: "#344648" }}
+                  >
+                    Logout
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </>
+        </nav>
       ) : (
         <>
-          <Link href="/login">
-            <a
-              className={`nav-link ${currentUser === "/login" && "active"}`}
-              style={{ color: "#f2ebe5" }}
-            >
-              Login
-            </a>
-          </Link>
-          <Link href="/register">
-            <a
-              className={`nav-link  ${currentUser === "/register" && "active"}`}
-              style={{ color: "#f2ebe5" }}
-            >
-              Register
-            </a>
-          </Link>
+          <nav className="nav p-2  d-flex justify-content-center fixed-top nav-bar-color">
+            <Link href="/">
+              <a
+                className={`nav-link logo ${currentUser === "/" && "active"}`}
+                style={{ color: "#f2ebe5" }}
+              >
+                Mind helper
+              </a>
+            </Link>
+            <Link href="/login">
+              <a
+                className={`nav-link ${currentUser === "/login" && "active"}`}
+                style={{ color: "#f2ebe5" }}
+              >
+                Login
+              </a>
+            </Link>
+            <Link href="/register">
+              <a
+                className={`nav-link  ${
+                  currentUser === "/register" && "active"
+                }`}
+                style={{ color: "#f2ebe5" }}
+              >
+                Register
+              </a>
+            </Link>
+          </nav>
         </>
       )}
     </nav>

@@ -12,5 +12,4 @@ router.post("/register", register);
 router.post("/login", login);
 router.get("/currentuser", requireSignIn, currentUser);
 router.post("/resetpassword", resetPassword);
-
 module.exports = router;
