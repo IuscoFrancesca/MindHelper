@@ -3,11 +3,11 @@ import { hashPassword, comparePassword } from "../helpers/auth";
 import jwt from "jsonwebtoken";
 
 export const register = async (req, res) => {
-  const { name, email, password, secret } = req.body;
+  const { username, email, password, secret } = req.body;
   //validations
-  if (!name) {
+  if (!username) {
     return res.json({
-      error: "Name is required",
+      error: "username is required",
     });
   }
   if (!password || password.lenght < 6) {
@@ -21,6 +21,13 @@ export const register = async (req, res) => {
     });
   }
 
+  const existUsername = await User.findOne({ username });
+  if (existUsername) {
+    return res.json({
+      error: "Username is taken",
+    });
+  }
+
   const exist = await User.findOne({ email });
   if (exist) {
     return res.json({
@@ -31,7 +38,7 @@ export const register = async (req, res) => {
   //hash the password
   const hashedPassword = await hashPassword(password);
 
-  const user = new User({ name, email, password: hashedPassword, secret });
+  const user = new User({ username, email, password: hashedPassword, secret });
   try {
     await user.save();
     return res.json({
@@ -119,5 +126,27 @@ export const resetPassword = async (req, res) => {
     return res.json({
       error: "Incercati din nou.",
     });
+  }
+};
+
+export const profile = async (req, res) => {
+  try {
+    const data = {};
+
+    if (req.body.username) {
+      data.username = req.body.username;
+    }
+    if (req.body.about) {
+      data.about = req.body.about;
+    }
+    if (req.body.image) {
+      data.image = req.body.image;
+    }
+    let user = await User.findByIdAndUpdate(req.user._id, data, { new: true });
+    res.json(user);
+  } catch (err) {
+    if (err.code === 11000) {
+      return res.json({ error: "Username-ul este folosit deja." });
+    }
   }
 };

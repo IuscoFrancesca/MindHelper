@@ -21,8 +21,8 @@ const QuestionList = ({ posts, handleDelete }) => {
           <div className=" card mb-5" key={post._id}>
             <div className="card-header">
               <div>
-                <Avatar size={40}>{post.postedBy.name[0]}</Avatar>
-                <span className="pt-2 mx-2">{post.postedBy.name}</span>
+                <Avatar size={40}>{post.postedBy.username[0]}</Avatar>
+                <span className="pt-2 mx-2">{post.postedBy.username}</span>
                 <span className="pt-2 mx-2">
                   {moment(post.createdAt).fromNow()}
                 </span>

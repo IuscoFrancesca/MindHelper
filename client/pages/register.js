@@ -8,7 +8,7 @@ import { UserContext } from "../context";
 import { useRouter } from "next/router";
 
 const Register = () => {
-  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [secret, setSecret] = useState("");
@@ -23,7 +23,7 @@ const Register = () => {
     try {
       setLoading(true);
       const { data } = await axios.post(`/register`, {
-        name: name,
+        username: username,
         email: email,
         password: password,
         secret: secret,
@@ -33,7 +33,7 @@ const Register = () => {
         toast.error(data.error);
         setLoading(false);
       } else {
-        setName("");
+        setUsername("");
         setEmail("");
         setPassword("");
         setSecret("");
@@ -60,8 +60,8 @@ const Register = () => {
         <div className="col-md-6 offset-md-3">
           <AuthForm
             handleSubmit={handleSubmit}
-            name={name}
-            setName={setName}
+            username={username}
+            setUsername={setUsername}
             email={email}
             setEmail={setEmail}
             password={password}

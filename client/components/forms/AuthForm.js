@@ -2,8 +2,8 @@ import { SyncOutlined } from "@ant-design/icons";
 
 const AuthForm = ({
   handleSubmit,
-  name,
-  setName,
+  username,
+  setUsername,
   email,
   setEmail,
   password,
@@ -12,19 +12,21 @@ const AuthForm = ({
   setSecret,
   loading,
   page,
+  about,
+  setAbout,
 }) => (
   <form onSubmit={handleSubmit}>
     {page !== "login" && (
       <div className="form-group p-2">
         <small>
-          <label className="text-muted">Your name</label>
+          <label className="text-muted">Your username</label>
         </small>
         <input
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
           type="text"
           className="form-control"
-          placeholder="Enter name"
+          placeholder="Enter username"
         />
       </div>
     )}
@@ -39,22 +41,25 @@ const AuthForm = ({
         type="email"
         className="form-control"
         placeholder="Enter email"
+        disabled={page === "profile"}
       />
     </div>
 
-    <div className="form-group p-2">
-      <small>
-        <label className="text-muted">Password</label>
-      </small>
-      <input
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        type="password"
-        className="form-control"
-        placeholder="Enter password"
-      />
-    </div>
-    {page !== "login" && (
+    {page !== "profile" && (
+      <div className="form-group p-2">
+        <small>
+          <label className="text-muted">Password</label>
+        </small>
+        <input
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          type="password"
+          className="form-control"
+          placeholder="Enter password"
+        />
+      </div>
+    )}
+    {page !== "login" && page !== "profile" && (
       <>
         <div className="form-group p-2">
           <small>
@@ -81,19 +86,42 @@ const AuthForm = ({
         </div>
       </>
     )}
+    {page === "profile" && (
+      <div className="form-group p-2">
+        <small>
+          <label className="text-muted">About</label>
+        </small>
+        <input
+          value={about}
+          onChange={(e) => setAbout(e.target.value)}
+          type="text"
+          className="form-control"
+          placeholder="Enter something about you"
+        />
+      </div>
+    )}
 
-    <div className="form-group p-2">
-      <button
-        disabled={
-          page === "login"
-            ? !email || !password || loading
-            : !name || !email || !password || !secret || loading
-        }
-        className="btn btn-primary col-12"
-      >
-        {loading ? <SyncOutlined spin className="py-1" /> : "Submit"}
-      </button>
-    </div>
+    {page !== "profile" && (
+      <div className="form-group p-2">
+        <button
+          disabled={
+            page === "login"
+              ? !email || !password || loading
+              : !username || !email || !password || !secret || loading
+          }
+          className="btn btn-primary col-12"
+        >
+          {loading ? <SyncOutlined spin className="py-1" /> : "Submit"}
+        </button>
+      </div>
+    )}
+    {page === "profile" && (
+      <div className="form-group p-2">
+        <button className="btn btn-primary col-12">
+          {loading ? <SyncOutlined spin className="py-1" /> : "Update profile"}
+        </button>
+      </div>
+    )}
   </form>
 );
 

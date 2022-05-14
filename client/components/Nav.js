@@ -42,18 +42,18 @@ const Nav = () => {
                 aria-expanded="false"
                 style={{ color: "#f2ebe5" }}
               >
-                {state && state.user && state.user.name}
+                {state && state.user && state.user.username}
               </a>
               <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 <li>
-                  <Link href="/user/dashboard">
+                  <Link href="/user/profile">
                     <a
                       className={`nav-link dropdown-item ${
-                        currentUser === "/user/dashboard" && "active"
+                        currentUser === "/user/profile" && "active"
                       }`}
                       style={{ color: "#344648" }}
                     >
-                      Dashboard
+                      Profile
                     </a>
                   </Link>
                 </li>

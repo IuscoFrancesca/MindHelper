@@ -3,10 +3,11 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 const userSchema = new Schema(
   {
-    name: {
+    username: {
       type: String,
       trim: true,
       require: true,
+      unique: true,
     },
     email: {
       type: String,
@@ -25,7 +26,10 @@ const userSchema = new Schema(
       require: true,
     },
     about: {},
-    photo: String,
+    image: {
+      url: String,
+      public_id: String,
+    },
     following: [{ type: Schema.ObjectId, ref: "User" }],
     followers: [{ type: Schema.ObjectId, ref: "User" }],
   },
