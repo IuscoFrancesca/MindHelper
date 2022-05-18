@@ -19,28 +19,28 @@ const AuthForm = ({
     {page !== "login" && (
       <div className="form-group p-2">
         <small>
-          <label className="text-muted">Your username</label>
+          <label className="text-muted">Nume de utilizator</label>
         </small>
         <input
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           type="text"
           className="form-control"
-          placeholder="Enter username"
+          placeholder="Introduceti numele de utilizator"
         />
       </div>
     )}
 
     <div className="form-group p-2">
       <small>
-        <label className="text-muted">Email address</label>
+        <label className="text-muted">Adresa de email</label>
       </small>
       <input
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         type="email"
         className="form-control"
-        placeholder="Enter email"
+        placeholder="Introduceti adresa de email"
         disabled={page === "profile"}
       />
     </div>
@@ -48,14 +48,14 @@ const AuthForm = ({
     {page !== "profile" && (
       <div className="form-group p-2">
         <small>
-          <label className="text-muted">Password</label>
+          <label className="text-muted">Parola</label>
         </small>
         <input
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           type="password"
           className="form-control"
-          placeholder="Enter password"
+          placeholder="Introduceti parola"
         />
       </div>
     )}
@@ -63,16 +63,16 @@ const AuthForm = ({
       <>
         <div className="form-group p-2">
           <small>
-            <label className="text-muted">Pick a question</label>
+            <label className="text-muted">Alege o intrebare</label>
           </small>
           <select className="form-control">
-            <option>What is your favorite color</option>
-            <option>What is your mom's name</option>
-            <option>What city you were born</option>
+            <option>Care este culoarea ta preferata?</option>
+            <option>Care este numele mamei tale?</option>
+            <option>Care este orasul tau natal?</option>
           </select>
 
           <small className="form-text text-muted">
-            You can use this to reset your password if forgotten
+            Puteți folosi acest lucru pentru a vă reseta parola
           </small>
         </div>
         <div className="form-group p-2">
@@ -81,7 +81,7 @@ const AuthForm = ({
             onChange={(e) => setSecret(e.target.value)}
             type="text"
             className="form-control"
-            placeholder="Write your answer here"
+            placeholder="Introduceti raspunsul"
           />
         </div>
       </>
@@ -89,14 +89,14 @@ const AuthForm = ({
     {page === "profile" && (
       <div className="form-group p-2">
         <small>
-          <label className="text-muted">About</label>
+          <label className="text-muted">Desspre tine</label>
         </small>
         <input
           value={about}
           onChange={(e) => setAbout(e.target.value)}
           type="text"
           className="form-control"
-          placeholder="Enter something about you"
+          placeholder="Scrie ceva despre tine"
         />
       </div>
     )}
@@ -118,7 +118,11 @@ const AuthForm = ({
     {page === "profile" && (
       <div className="form-group p-2">
         <button className="btn btn-primary col-12">
-          {loading ? <SyncOutlined spin className="py-1" /> : "Update profile"}
+          {loading ? (
+            <SyncOutlined spin className="py-1" />
+          ) : (
+            "Actualizeaza profilul"
+          )}
         </button>
       </div>
     )}

@@ -6,12 +6,19 @@ import axios from "axios";
 import UserRoute from "../../components/routes/UserRoute";
 import { toast } from "react-toastify";
 import QuestionList from "../../components/cards/QuestionList";
+import { Modal } from "antd";
+import AnswerForm from "../../components/forms/AnswerForm";
 
 const questionandanswer = () => {
   const [state, setState] = useContext(UserContext);
   //state
   const [content, setContent] = useState("");
   const [posts, setPosts] = useState([]);
+  //answers
+  const [answer, setAnswer] = useState("");
+  const [visible, setVisible] = useState(false);
+  const [currentQuestion, setCurrentQuestion] = useState({});
+
   //route
   const router = useRouter();
 
@@ -56,12 +63,62 @@ const questionandanswer = () => {
     }
   };
 
+  const handleLike = async (_id) => {
+    try {
+      const { data } = await axios.put("/like-question", { _id });
+      fetchUserPosts();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleUnlike = async (_id) => {
+    try {
+      const { data } = await axios.put("/unlike-question", { _id });
+      fetchUserPosts();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleAnswer = (post) => {
+    setCurrentQuestion(post);
+    setVisible(true);
+  };
+  const addAnswer = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await axios.put("/add-answer", {
+        postId: currentQuestion._id,
+        answer,
+      });
+      setAnswer("");
+      setVisible(false);
+      fetchUserPosts();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const removeAnswer = async (postId, answer) => {
+    let confirm = window.confirm("Sunteti sigur?");
+    if (!confirm) return;
+    try {
+      const { data } = await axios.put("/delete-answer", {
+        postId,
+        answer,
+      });
+      fetchUserPosts();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <UserRoute>
       <div className="container-fluid py-5 bg-purplepage-color ">
         <div className="row py-5 bg-default-image height-page">
           <div className="display-1 py-5 text-center">
-            <h1 style={{ color: "#000000" }}>Question-and-answer page</h1>
+            <h1 style={{ color: "#000000" }}>Intrebari si raspunsuri</h1>
           </div>
         </div>
         <div className="row py-3">
@@ -72,9 +129,29 @@ const questionandanswer = () => {
               postSubmit={postSubmit}
             />
             <br />
-            <QuestionList posts={posts} handleDelete={handleDelete} />
+            <QuestionList
+              posts={posts}
+              handleDelete={handleDelete}
+              handleLike={handleLike}
+              handleUnlike={handleUnlike}
+              handleAnswer={handleAnswer}
+              addAnswer={addAnswer}
+              removeAnswer={removeAnswer}
+            />
           </div>
         </div>
+        <Modal
+          visible={visible}
+          onCancel={() => setVisible(false)}
+          title="Answer"
+          footer={null}
+        >
+          <AnswerForm
+            answer={answer}
+            setAnswer={setAnswer}
+            addAnswer={addAnswer}
+          />
+        </Modal>
       </div>
     </UserRoute>
   );

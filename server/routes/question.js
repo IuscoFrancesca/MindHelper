@@ -10,6 +10,10 @@ import {
   updatePost,
   deleteQuestion,
   uploadImage,
+  likePost,
+  unlikePost,
+  addAnswer,
+  deleteAnswer,
 } from "../controllers/question";
 
 router.post("/create-question", requireSignIn, createQuestion);
@@ -35,5 +39,11 @@ router.delete(
   canEditDeleteQuestion,
   deleteQuestion
 );
+
+router.put("/like-question", requireSignIn, likePost);
+router.put("/unlike-question", requireSignIn, unlikePost);
+
+router.put("/add-answer", requireSignIn, addAnswer);
+router.put("/delete-answer", requireSignIn, deleteAnswer);
 
 module.exports = router;

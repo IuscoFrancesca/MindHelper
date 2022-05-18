@@ -50,7 +50,7 @@ const ResetPassword = () => {
     <div className="container-fluid py-5 ">
       <div className="row py-5 bg-default-image height-page">
         <div className="display-1 py-5 text-center">
-          <h1 style={{ color: "#000000" }}>Reset password page</h1>
+          <h1 style={{ color: "#000000" }}>Resetare parola</h1>
         </div>
       </div>
 

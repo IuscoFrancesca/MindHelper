@@ -10,47 +10,45 @@ const ResetPasswordForm = ({
   setSecret,
   loading,
   page,
+  logout,
 }) => (
   <form onSubmit={handleSubmit}>
     <div className="form-group p-2">
       <small>
-        <label className="text-muted">Email address</label>
+        <label className="text-muted">Adresa de email</label>
       </small>
       <input
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         type="email"
         className="form-control"
-        placeholder="Enter email"
+        placeholder="Introduceti adresa de email"
+        disabled={page === "resetpasswordprofile"}
       />
     </div>
 
     <div className="form-group p-2">
       <small>
-        <label className="text-muted">New password</label>
+        <label className="text-muted">Parola noua</label>
       </small>
       <input
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         type="password"
         className="form-control"
-        placeholder="Enter new password"
+        placeholder="introduceti noua parola"
       />
     </div>
     <>
       <div className="form-group p-2">
         <small>
-          <label className="text-muted">Pick a question</label>
+          <label className="text-muted">Alege o intrebare</label>
         </small>
         <select className="form-control">
-          <option>What is your favorite color</option>
-          <option>What is your mom's name</option>
-          <option>What city you were born</option>
+          <option>Care este culoarea ta preferata?</option>
+          <option>Care este numele mamei tale?</option>
+          <option>Care este orasul tau natal?</option>
         </select>
-
-        <small className="form-text text-muted">
-          You can use this to reset your password if forgotten
-        </small>
       </div>
       <div className="form-group p-2">
         <input
@@ -58,19 +56,32 @@ const ResetPasswordForm = ({
           onChange={(e) => setSecret(e.target.value)}
           type="text"
           className="form-control"
-          placeholder="Write your answer here"
+          placeholder="Introduceti raspunsul"
         />
       </div>
     </>
 
-    <div className="form-group p-2">
-      <button
-        disabled={!email || !password || !secret || loading}
-        className="btn btn-primary col-12"
-      >
-        {loading ? <SyncOutlined spin className="py-1" /> : "Submit"}
-      </button>
-    </div>
+    {page !== "resetpasswordprofile" && (
+      <div className="form-group p-2">
+        <button
+          disabled={!email || !password || !secret || loading}
+          className="btn btn-primary col-12"
+        >
+          {loading ? <SyncOutlined spin className="py-1" /> : "Submit"}
+        </button>
+      </div>
+    )}
+    {page === "resetpasswordprofile" && (
+      <div className="form-group p-2">
+        <button
+          disabled={!email || !password || !secret || loading}
+          className="btn btn-primary col-12"
+          onClick={logout}
+        >
+          {loading ? <SyncOutlined spin className="py-1" /> : "Submit"}
+        </button>
+      </div>
+    )}
   </form>
 );
 

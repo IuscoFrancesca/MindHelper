@@ -50,7 +50,7 @@ const Login = () => {
     <div className="container-fluid py-5 ">
       <div className="row py-5 bg-default-image height-page">
         <div className="display-1 py-5 text-center">
-          <h1 style={{ color: "#000000" }}>Login page</h1>
+          <h1 style={{ color: "#000000" }}>Autentificare</h1>
         </div>
       </div>
 
@@ -70,9 +70,9 @@ const Login = () => {
       <div className="row">
         <div className="col">
           <p className="text-center">
-            Not yet registered?{" "}
+            Nu aveti inca un cont?{" "}
             <Link href="/register">
-              <a className="text-center">Register</a>
+              <a className="text-center">Inregistrare</a>
             </Link>
           </p>
         </div>
@@ -81,9 +81,9 @@ const Login = () => {
       <div className="row">
         <div className="col">
           <p className="text-center">
-            Forgot password?{" "}
+            Ati uitat parola?{" "}
             <Link href="/resetpassword">
-              <a className="text-center text-danger">Reset password</a>
+              <a className="text-center text-danger">Resetare parola</a>
             </Link>
           </p>
         </div>

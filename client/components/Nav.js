@@ -53,7 +53,19 @@ const Nav = () => {
                       }`}
                       style={{ color: "#344648" }}
                     >
-                      Profile
+                      Profil
+                    </a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/user/questionandanswer">
+                    <a
+                      className={`nav-link dropdown-item ${
+                        currentUser === "/user/questionandanswer" && "active"
+                      }`}
+                      style={{ color: "#344648" }}
+                    >
+                      Intrebari si raspunsuri
                     </a>
                   </Link>
                 </li>
@@ -63,7 +75,7 @@ const Nav = () => {
                     className="nav-link dropdown-item"
                     style={{ color: "#344648" }}
                   >
-                    Logout
+                    Deconectare
                   </a>
                 </li>
               </ul>
@@ -86,7 +98,7 @@ const Nav = () => {
                 className={`nav-link ${currentUser === "/login" && "active"}`}
                 style={{ color: "#f2ebe5" }}
               >
-                Login
+                Autentificare
               </a>
             </Link>
             <Link href="/register">
@@ -96,7 +108,7 @@ const Nav = () => {
                 }`}
                 style={{ color: "#f2ebe5" }}
               >
-                Register
+                Inregistrare
               </a>
             </Link>
           </nav>

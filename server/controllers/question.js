@@ -29,7 +29,8 @@ export const userQuestions = async (req, res) => {
     //const posts = await Post.find({ postedBy: req.user._id })
 
     const posts = await Post.find()
-      .populate("postedBy", "_id username")
+      .populate("postedBy", "_id username image")
+      .populate("answers.postedBy", "_id username image")
       .sort({ createdAt: -1 })
       .limit(10);
     res.json(posts);
@@ -40,7 +41,9 @@ export const userQuestions = async (req, res) => {
 
 export const editUserQuestion = async (req, res) => {
   try {
-    const post = await Post.findById(req.params._id);
+    const post = await Post.findById(req.params._id)
+      .populate("postedBy", "_id username image")
+      .populate("answers.postedBy", "_id username image");
     res.json(post);
   } catch (err) {
     console.log(err);
@@ -73,6 +76,70 @@ export const uploadImage = async (req, res) => {
       url: result.secure_url,
       public_id: result.public_id,
     });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const likePost = async (req, res) => {
+  try {
+    const post = await Post.findByIdAndUpdate(
+      req.body._id,
+      {
+        $addToSet: { likes: req.user._id },
+      },
+      { new: true }
+    );
+    res.json(post);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const unlikePost = async (req, res) => {
+  try {
+    const post = await Post.findByIdAndUpdate(
+      req.body._id,
+      {
+        $pull: { likes: req.user._id },
+      },
+      { new: true }
+    );
+    res.json(post);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const addAnswer = async (req, res) => {
+  try {
+    const { postId, answer } = req.body;
+    const result = await Post.findByIdAndUpdate(
+      postId,
+      {
+        $push: { answers: { text: answer, postedBy: req.user._id } },
+      },
+      { new: true }
+    )
+      .populate("postedBy", "_id username image")
+      .populate("answers.postedBy", "_id username image");
+    res.json(result);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const deleteAnswer = async (req, res) => {
+  try {
+    const { postId, answer } = req.body;
+    const result = await Post.findByIdAndUpdate(
+      postId,
+      {
+        $pull: { answers: { _id: answer._id } },
+      },
+      { new: true }
+    );
+    res.json(result);
   } catch (err) {
     console.log(err);
   }

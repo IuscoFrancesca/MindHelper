@@ -14,7 +14,7 @@ const postSchema = new mongoose.Schema(
     likes: [{ type: ObjectId, ref: "User" }],
     answers: [
       {
-        test: String,
+        text: String,
         created: { type: Date, default: Date.now },
         postedBy: {
           type: ObjectId,

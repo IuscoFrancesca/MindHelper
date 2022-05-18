@@ -84,7 +84,7 @@ const Home = () => {
             </button>
           </div>
         </div>
-        {state !== null ? (
+        {/* {state !== null ? (
           <>
             <div className="row py-3">
               <p>
@@ -97,7 +97,7 @@ const Home = () => {
           </>
         ) : (
           <></>
-        )}
+        )} */}
       </div>
     </div>
   );
